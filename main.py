@@ -3,10 +3,10 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QWidget, QV
                              QComboBox)
 from PyQt6.QtCore import Qt, QSize  # Import Qt for alignment and other constants
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-
 
         # Create a central widget and set it
         centralWidget = QWidget()
@@ -26,7 +26,6 @@ class MainWindow(QMainWindow):
         # Title bar layout inside the frame
         titleBarLayout = QHBoxLayout(titleFrame)  # Assign the layout directly to the frame
         titleBarLayout.setContentsMargins(5, 0, 5, 0)  # Add some padding around the layout
-
 
         # Save Button
         saveButton = QPushButton("Save")
@@ -50,11 +49,8 @@ class MainWindow(QMainWindow):
         titleBarLayout.addWidget(saveButton)  # Add Save button
         titleBarLayout.addWidget(closeButton)  # Add Close button
 
-
         # Add the title frame to the main layout
         mainLayout.addWidget(titleFrame)
-
-
 
         # First column
         firstColumn = QVBoxLayout()
@@ -67,18 +63,17 @@ class MainWindow(QMainWindow):
         buttonRowLayout.setSpacing(10)  # Set spacing between widgets in the layout to 0
         buttonRowLayout.setContentsMargins(5, 0, 5, 0)  # Set the layout's margins to 20
 
-        #buttonRowLayout.addStretch(0)
+        # buttonRowLayout.addStretch(0)
         sizeLabel = QLabel("Textsize:")
         sizeLabel.setStyleSheet("font-size: 20px; color: #000000; font-weight: bold;")
-                    #Add Widgets
+        # Add Widgets
         buttonRowLayout.addWidget(self.adjustSizeToPercentageBoldButton())
         buttonRowLayout.addWidget(self.adjustSizeToPercentageKursivButton())
         buttonRowLayout.addWidget(self.adjustSizeToPercentageUnderlineButton())
         buttonRowLayout.addWidget(sizeLabel)
-        buttonRowLayout.addWidget(self.adjustSizeToPercentageDropwdown())
+        buttonRowLayout.addWidget(self.adjustSizeToPercentageDropdown())
 
         secondColumn.addLayout(buttonRowLayout)
-
 
         secondColumn.addWidget(QLabel("Second Column Top"))
         secondColumn.addWidget(QLabel("Second Column Bottom"))
@@ -108,7 +103,7 @@ class MainWindow(QMainWindow):
                         }"""
 
         # Calculate size as a percentage of the parent widget's size
-        widthPercentage = 0.1# 30% of parent's width
+        widthPercentage = 0.1  # 30% of parent's width
         heightPercentage = 0.05  # 10% of parent's height
 
         # Calculate the absolute size based on percentage
@@ -122,8 +117,7 @@ class MainWindow(QMainWindow):
         boldButton.setStyleSheet(buttonStyle)
         boldButton.clicked.connect(self.onSaveClicked)  # Connect to the save method
 
-        return  boldButton
-
+        return boldButton
 
     def adjustSizeToPercentageKursivButton(self):
         # Example widget
@@ -152,7 +146,7 @@ class MainWindow(QMainWindow):
         kursivButton.setStyleSheet(buttonStyle)
         kursivButton.clicked.connect(self.onSaveClicked)  # Connect to the save method
 
-        return  kursivButton
+        return kursivButton
 
     def adjustSizeToPercentageUnderlineButton(self):
         # Example widget
@@ -184,7 +178,8 @@ class MainWindow(QMainWindow):
 
         return underlineButton
 
-    def adjustSizeToPercentageDropwdown(self):
+    @staticmethod
+    def adjustSizeToPercentageDropdown():
         # Example widget
         sizeDropdown = QComboBox()
         buttonStyle = """
@@ -205,7 +200,7 @@ class MainWindow(QMainWindow):
         calculatedWidth = int(size_width * widthPercentage)
         calculatedHeight = int(size_height * heightPercentage)
 
-            # Set the calculated size to the widget
+        # Set the calculated size to the widget
         sizeDropdown.setFixedSize(QSize(calculatedWidth, calculatedHeight))
         # Dropdown Text size
         sizeDropdown.addItems(["8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30"])  # Example sizes
@@ -214,14 +209,16 @@ class MainWindow(QMainWindow):
 
         return sizeDropdown
 
-    def onSaveClicked(self):
+    @staticmethod
+    def onSaveClicked():
         # Implement your save functionality here
         print("Save button clicked")
 
+    @staticmethod
     def onCloseClicked(self):
-
-    # Close here
+        # Close here
         self.close()
+
 
 # Run the application
 app = QApplication(sys.argv)
