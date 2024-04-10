@@ -67,7 +67,7 @@ class MainWindow(QMainWindow):
         buttonRowLayout.setSpacing(10)  # Set spacing between widgets in the layout to 0
         buttonRowLayout.setContentsMargins(5, 0, 5, 0)  # Set the layout's margins to 20
 
-        buttonRowLayout.addStretch(1)
+        #buttonRowLayout.addStretch(0)
         sizeLabel = QLabel("Textsize:")
         sizeLabel.setStyleSheet("font-size: 20px; color: #000000; font-weight: bold;")
                     #Add Widgets
@@ -108,13 +108,13 @@ class MainWindow(QMainWindow):
                         }"""
 
         # Calculate size as a percentage of the parent widget's size
-        parentSize = self.size()  # Get the size of the parent widget
-        widthPercentage = 0.5  # 50% of parent's width
-        heightPercentage = 0.1  # 10% of parent's height
+        widthPercentage = 0.15# 30% of parent's width
+        heightPercentage = 0.05  # 10% of parent's height
 
         # Calculate the absolute size based on percentage
-        calculatedWidth = int(parentSize.width() * widthPercentage)
-        calculatedHeight = int(parentSize.height() * heightPercentage)
+        calculatedWidth = int(size_width * widthPercentage)
+        print(calculatedWidth)
+        calculatedHeight = int(size_height * heightPercentage)
 
         # Set the calculated size to the widget
 
@@ -139,12 +139,12 @@ class MainWindow(QMainWindow):
                 """
         # Calculate size as a percentage of the parent widget's size
         parentSize = self.size()  # Get the size of the parent widget
-        widthPercentage = 0.5  # 50% of parent's width
-        heightPercentage = 0.1  # 10% of parent's height
+        widthPercentage = 0.15  # 50% of parent's width
+        heightPercentage = 0.05  # 10% of parent's height
 
         # Calculate the absolute size based on percentage
-        calculatedWidth = int(parentSize.width() * widthPercentage)
-        calculatedHeight = int(parentSize.height() * heightPercentage)
+        calculatedWidth = int(size_width * widthPercentage)
+        calculatedHeight = int(size_height * heightPercentage)
 
         # Set the calculated size to the widget
 
@@ -169,12 +169,12 @@ class MainWindow(QMainWindow):
 
         # Calculate size as a percentage of the parent widget's size
         parentSize = self.size()  # Get the size of the parent widget
-        widthPercentage = 0.5  # 50% of parent's width
-        heightPercentage = 0.1  # 10% of parent's height
+        widthPercentage = 0.15  # 50% of parent's width
+        heightPercentage = 0.05  # 10% of parent's height
 
         # Calculate the absolute size based on percentage
-        calculatedWidth = int(parentSize.width() * widthPercentage)
-        calculatedHeight = int(parentSize.height() * heightPercentage)
+        calculatedWidth = int(size_width * widthPercentage)
+        calculatedHeight = int(size_height * heightPercentage)
 
         # Set the calculated size to the widget
 
@@ -198,16 +198,14 @@ class MainWindow(QMainWindow):
                    """
 
         # Calculate size as a percentage of the parent widget's size
-        parentSize = self.size()  # Get the size of the parent widget
-        widthPercentage = 0.5  # 50% of parent's width
-        heightPercentage = 0.1  # 10% of parent's height
+        widthPercentage = 0.05  # 50% of parent's width
+        heightPercentage = 0.05  # 10% of parent's height
 
         # Calculate the absolute size based on percentage
-        calculatedWidth = int(parentSize.width() * widthPercentage)
-        calculatedHeight = int(parentSize.height() * heightPercentage)
+        calculatedWidth = int(size_width * widthPercentage)
+        calculatedHeight = int(size_height * heightPercentage)
 
             # Set the calculated size to the widget
-
         sizeDropdown.setFixedSize(QSize(calculatedWidth, calculatedHeight))
         # Dropdown Text size
         sizeDropdown.addItems(["8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30"])  # Example sizes
@@ -227,6 +225,11 @@ class MainWindow(QMainWindow):
 
 # Run the application
 app = QApplication(sys.argv)
+screen = app.primaryScreen()
+size = screen.size()
+size_width = size.width()
+size_height = size.height()
+
 window = MainWindow()
 window.show()
 app.exec()
