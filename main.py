@@ -79,8 +79,21 @@ class MainWindow(QMainWindow):
 
         # Layout for columns
         columnsLayout = QHBoxLayout()
-        # Add columns to the columns layout
+        # Add first column to the columns layout
         columnsLayout.addLayout(firstColumn)
+
+        #  Layout for seperator
+        separator = QFrame()
+        separator.setFrameShape(QFrame.Shape.VLine)
+        separator.setFrameShadow(QFrame.Shadow.Sunken)
+        separator.setLineWidth(10)
+        separator.setFixedWidth(10)
+        separator.setStyleSheet("QFrame { color: black; border: 10px solid black; }")
+
+        # Add the separator to the layout
+        columnsLayout.addWidget(separator)
+
+        # Add second column to the columns layout
         columnsLayout.addLayout(secondColumn)
 
         # Add the columns layout below the taskbar layout
