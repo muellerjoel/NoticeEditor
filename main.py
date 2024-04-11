@@ -1,7 +1,7 @@
 import sys
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QFrame,
-                             QComboBox)
-from PyQt6.QtCore import Qt, QSize  # Import Qt for alignment and other constants
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QWidget,
+                             QVBoxLayout, QHBoxLayout, QLabel, QFrame,QComboBox)
+from PyQt6.QtCore import QSize  # Import Qt for alignment and other constants
 
 
 class MainWindow(QMainWindow):
@@ -11,7 +11,6 @@ class MainWindow(QMainWindow):
         # Create a central widget and set it
         centralWidget = QWidget()
         self.setCentralWidget(centralWidget)
-
         # Create the main layout and assign it to the central widget
         mainLayout = QVBoxLayout()
         centralWidget.setLayout(mainLayout)
@@ -36,7 +35,7 @@ class MainWindow(QMainWindow):
         # Close Button
         closeButton = QPushButton("Exit")
         closeButton.setFixedSize(QSize(60, 20))
-        closeButton.setStyleSheet("QPushButton { background-color: black; color: white; border: 2px solid white; }")
+        closeButton.setStyleSheet("QPushButton { background-color: black; color: white; border: 2px solid white;}")
         closeButton.clicked.connect(self.onCloseClicked)
 
         titleLabel = QLabel("Notice Editor - Joël Müller - Version 0.1")
@@ -65,7 +64,7 @@ class MainWindow(QMainWindow):
 
         # buttonRowLayout.addStretch(0)
         sizeLabel = QLabel("Textsize:")
-        sizeLabel.setStyleSheet("font-size: 20px; color: #000000; font-weight: bold;")
+        sizeLabel.setStyleSheet("font-size: 25px; color: #000000; background-color: lightgrey; border: 5px solid grey;")
         # Add Widgets
         buttonRowLayout.addWidget(self.adjustSizeToPercentageBoldButton())
         buttonRowLayout.addWidget(self.adjustSizeToPercentageKursivButton())
@@ -95,16 +94,16 @@ class MainWindow(QMainWindow):
         boldButton = QPushButton("Bold")
         buttonStyle = """
                         QPushButton {
-                            background-color: white;
-                            font-size: 20px;
+                            background-color: lightgrey;
+                            font-size: 25px;
                             font-weight: bold;
                             color: black;
-                            border: 5px solid black;
+                            border: 5px solid grey;
                         }"""
 
         # Calculate size as a percentage of the parent widget's size
-        widthPercentage = 0.1  # 30% of parent's width
-        heightPercentage = 0.05  # 10% of parent's height
+        widthPercentage = 0.1  # 10% of parent's width
+        heightPercentage = 0.05  # 5% of parent's height
 
         # Calculate the absolute size based on percentage
         calculatedWidth = int(size_width * widthPercentage)
@@ -121,20 +120,19 @@ class MainWindow(QMainWindow):
 
     def adjustSizeToPercentageKursivButton(self):
         # Example widget
-        kursivButton = QPushButton("Kursiv")
+        kursivButton = QPushButton("Italic")
         buttonStyle = """
-                QPushButton {
-                    background-color: white;
-                    font-size: 20px;
-                    font-weight: bold;
-                    color: black;
-                    border: 5px solid black;
-                }
-                """
+                               QPushButton {
+                                   background-color: lightgrey;
+                                   font-size: 25px;
+                                   font: italic;
+                                   color: black;
+                                   border: 5px solid grey;
+                               }"""
         # Calculate size as a percentage of the parent widget's size
         parentSize = self.size()  # Get the size of the parent widget
-        widthPercentage = 0.1  # 50% of parent's width
-        heightPercentage = 0.05  # 10% of parent's height
+        widthPercentage = 0.1  # 10% of parent's width
+        heightPercentage = 0.05  # 5% of parent's height
 
         # Calculate the absolute size based on percentage
         calculatedWidth = int(size_width * widthPercentage)
@@ -152,19 +150,17 @@ class MainWindow(QMainWindow):
         # Example widget
         underlineButton = QPushButton("Underline")
         buttonStyle = """
-                QPushButton {
-                    background-color: white;
-                    font-size: 20px;
-                    font-weight: bold;
-                    color: black;
-                    border: 5px solid black;
-                }
-                """
-
+                               QPushButton {
+                                   background-color: lightgrey;
+                                   font-size: 25px;
+                                   text-decoration: underline;
+                                   color: black;
+                                   border: 5px solid grey;
+                               }"""
         # Calculate size as a percentage of the parent widget's size
         parentSize = self.size()  # Get the size of the parent widget
-        widthPercentage = 0.1  # 50% of parent's width
-        heightPercentage = 0.05  # 10% of parent's height
+        widthPercentage = 0.1  # 10% of parent's width
+        heightPercentage = 0.05  # 5% of parent's height
 
         # Calculate the absolute size based on percentage
         calculatedWidth = int(size_width * widthPercentage)
@@ -178,23 +174,13 @@ class MainWindow(QMainWindow):
 
         return underlineButton
 
-    @staticmethod
-    def adjustSizeToPercentageDropdown():
+    def adjustSizeToPercentageDropdown(self):
         # Example widget
         sizeDropdown = QComboBox()
-        buttonStyle = """
-                   QPushButton {
-                       background-color: white;
-                       font-size: 20px;
-                       font-weight: bold;
-                       color: black;
-                       border: 5px solid black;
-                   }
-                   """
 
         # Calculate size as a percentage of the parent widget's size
-        widthPercentage = 0.025  # 50% of parent's width
-        heightPercentage = 0.05  # 10% of parent's height
+        widthPercentage = 0.03  # 3% of parent's width
+        heightPercentage = 0.05  # 5% of parent's height
 
         # Calculate the absolute size based on percentage
         calculatedWidth = int(size_width * widthPercentage)
@@ -205,8 +191,12 @@ class MainWindow(QMainWindow):
         # Dropdown Text size
         sizeDropdown.addItems(["8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30"])  # Example sizes
         # Adding a label for the size dropdown
-        sizeDropdown.setStyleSheet(buttonStyle)
-
+        sizeDropdown.setStyleSheet("""
+                                       QComboBox { background-color: lightgrey;
+                                           font-size: 25px;
+                                           color: black;
+                                           border: 5px solid grey;
+                                       }""")
         return sizeDropdown
 
     @staticmethod
@@ -226,9 +216,6 @@ screen = app.primaryScreen()
 size = screen.size()
 size_width = size.width()
 size_height = size.height()
-
-print(size_width)
-print(size_height)
 
 window = MainWindow()
 window.show()
