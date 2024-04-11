@@ -99,6 +99,10 @@ class MainWindow(QMainWindow):
                             font-weight: bold;
                             color: black;
                             border: 5px solid grey;
+                             }
+                        QPushButton:pressed {
+                             background-color: darkgrey;
+                             border-style: inset;
                         }"""
 
         # Calculate size as a percentage of the parent widget's size
@@ -122,13 +126,17 @@ class MainWindow(QMainWindow):
         # Example widget
         kursivButton = QPushButton("Italic")
         buttonStyle = """
-                               QPushButton {
-                                   background-color: lightgrey;
-                                   font-size: 25px;
-                                   font: italic;
-                                   color: black;
-                                   border: 5px solid grey;
-                               }"""
+                           QPushButton {
+                               background-color: lightgrey;
+                               font-size: 25px;
+                               font: italic;
+                               color: black;
+                               border: 5px solid grey;
+                                }
+                           QPushButton:pressed {
+                                background-color: darkgrey;
+                                border-style: inset;
+                            }"""
         # Calculate size as a percentage of the parent widget's size
         parentSize = self.size()  # Get the size of the parent widget
         widthPercentage = 0.1  # 10% of parent's width
@@ -150,13 +158,17 @@ class MainWindow(QMainWindow):
         # Example widget
         underlineButton = QPushButton("Underline")
         buttonStyle = """
-                               QPushButton {
-                                   background-color: lightgrey;
-                                   font-size: 25px;
-                                   text-decoration: underline;
-                                   color: black;
-                                   border: 5px solid grey;
-                               }"""
+                           QPushButton {
+                               background-color: lightgrey;
+                               font-size: 25px;
+                               font: italic;
+                               color: black;
+                               border: 5px solid grey;
+                                }
+                           QPushButton:pressed {
+                                background-color: darkgrey;
+                                border-style: inset;
+                            }"""
         # Calculate size as a percentage of the parent widget's size
         parentSize = self.size()  # Get the size of the parent widget
         widthPercentage = 0.1  # 10% of parent's width
@@ -192,11 +204,21 @@ class MainWindow(QMainWindow):
         sizeDropdown.addItems(["8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30"])  # Example sizes
         # Adding a label for the size dropdown
         sizeDropdown.setStyleSheet("""
-                                       QComboBox { background-color: lightgrey;
-                                           font-size: 25px;
-                                           color: black;
-                                           border: 5px solid grey;
-                                       }""")
+                                    QComboBox { background-color: lightgrey;
+                                       font-size: 25px;
+                                       color: black;
+                                       border: 5px solid grey;
+                                       }
+                                     QComboBox:drop-down {
+                                        subcontrol-origin: padding;
+                                        subcontrol-position: top right;
+                                        width: 15px;
+                                        border-left-width: 5px;
+                                        border-left-color: gray;
+                                        border-left-style: solid; 
+                                        border-top-right-radius: 5px; 
+                                        border-bottom-right-radius: 5px;
+                                        }""")
         return sizeDropdown
 
     @staticmethod
