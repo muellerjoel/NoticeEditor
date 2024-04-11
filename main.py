@@ -1,6 +1,6 @@
 import sys
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QWidget,
-                             QVBoxLayout, QHBoxLayout, QLabel, QFrame,QComboBox)
+                             QVBoxLayout, QHBoxLayout, QLabel, QFrame, QComboBox)
 from PyQt6.QtCore import QSize  # Import Qt for alignment and other constants
 
 
