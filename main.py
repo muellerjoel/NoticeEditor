@@ -124,7 +124,6 @@ class MainWindow(QMainWindow):
 
         # Calculate the absolute size based on percentage
         calculatedWidth = int(size_width * widthPercentage)
-        print(calculatedWidth)
         calculatedHeight = int(size_height * heightPercentage)
 
         # Set the calculated size to the widget
@@ -151,7 +150,7 @@ class MainWindow(QMainWindow):
                                 border-style: inset;
                             }"""
         # Calculate size as a percentage of the parent widget's size
-        parentSize = self.size()  # Get the size of the parent widget
+
         widthPercentage = 0.1  # 10% of parent's width
         heightPercentage = 0.05  # 5% of parent's height
 
@@ -183,7 +182,7 @@ class MainWindow(QMainWindow):
                                 border-style: inset;
                             }"""
         # Calculate size as a percentage of the parent widget's size
-        parentSize = self.size()  # Get the size of the parent widget
+
         widthPercentage = 0.1  # 10% of parent's width
         heightPercentage = 0.05  # 5% of parent's height
 
