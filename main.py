@@ -291,22 +291,27 @@ class MainWindow(QMainWindow):
                                         }""")
         return sizeDropdown
 
+    @staticmethod
     def return_pressed(self):
         print("Return pressed!")
        # self.secondColumn.addWidget(self.adjustSizeToPercentageIOBox().setPlaceholderText("BOOM"))
 
+    @staticmethod
     def selection_changed(self):
         print("Selection changed")
         print(self.centralWidget().selectedText())
 
+    @staticmethod
     def text_changed(self, s):
         print("Text changed...")
         print(s)
 
+    @staticmethod
     def text_edited(self, s):
         print("Text edited...")
         print(s)
 
+    @staticmethod
     def add_item(self):
         # Adding a new item with a placeholder text
         new_item = QListWidgetItem("New Item")
@@ -314,6 +319,7 @@ class MainWindow(QMainWindow):
         self.list_widget.addItem(new_item)
         self.list_widget.editItem(new_item)  # Automatically start editing the new item
 
+    @staticmethod
     def delete_item(self):
         # Delete the selected item
         current_item = self.list_widget.currentItem()
@@ -330,7 +336,6 @@ class MainWindow(QMainWindow):
     def onCloseClicked(self):
         # Close here
         self.close()
-
 
 
 # Run the application
