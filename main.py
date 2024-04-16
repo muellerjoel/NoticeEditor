@@ -9,7 +9,6 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-
         self.setWindowTitle("Notice Editor GUI")
 
         # Create a central widget and set it
@@ -58,8 +57,8 @@ class MainWindow(QMainWindow):
         # First column
         firstColumn = QVBoxLayout()
         centralWidget.setLayout(firstColumn)
-        #firstColumn.addWidget(QLabel("First Column Top"))
-        #firstColumn.addWidget(QLabel("First Column Bottom"))
+        # firstColumn.addWidget(QLabel("First Column Top"))
+        # firstColumn.addWidget(QLabel("First Column Bottom"))
 
         # Second column
         secondColumn = QVBoxLayout()
@@ -94,7 +93,6 @@ class MainWindow(QMainWindow):
 
         # Add widgets to the main layout
 
-
         # Add Widgets
         buttonRowLayout.addWidget(self.adjustSizeToPercentageBoldButton())
         buttonRowLayout.addWidget(self.adjustSizeToPercentageKursivButton())
@@ -105,7 +103,6 @@ class MainWindow(QMainWindow):
         firstColumn.addLayout(button_layout)
         secondColumn.addLayout(buttonRowLayout)
         secondColumn.addWidget(self.adjustSizeToPercentageIOBox())
-
 
         # Layout for columns
         columnsLayout = QHBoxLayout()
@@ -146,7 +143,7 @@ class MainWindow(QMainWindow):
 
         # Calculate size as a percentage of the parent widget's size
         widthPercentage = 0.5  # 50% of parent's width
-        heightPercentage = 0.9 # 90% of parent's height
+        heightPercentage = 0.9  # 90% of parent's height
 
         # Calculate the absolute size based on percentaged
 
@@ -291,12 +288,11 @@ class MainWindow(QMainWindow):
                                         }""")
         return sizeDropdown
 
-    @staticmethod
     def return_pressed(self):
         print("Return pressed!")
-       # self.secondColumn.addWidget(self.adjustSizeToPercentageIOBox().setPlaceholderText("BOOM"))
 
-    @staticmethod
+    # self.secondColumn.addWidget(self.adjustSizeToPercentageIOBox().setPlaceholderText("BOOM"))
+
     def selection_changed(self):
         print("Selection changed")
         print(self.centralWidget().selectedText())
@@ -311,7 +307,6 @@ class MainWindow(QMainWindow):
         print("Text edited...")
         print(s)
 
-    @staticmethod
     def add_item(self):
         # Adding a new item with a placeholder text
         new_item = QListWidgetItem("New Item")
@@ -319,7 +314,6 @@ class MainWindow(QMainWindow):
         self.list_widget.addItem(new_item)
         self.list_widget.editItem(new_item)  # Automatically start editing the new item
 
-    @staticmethod
     def delete_item(self):
         # Delete the selected item
         current_item = self.list_widget.currentItem()
