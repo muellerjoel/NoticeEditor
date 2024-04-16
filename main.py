@@ -55,11 +55,13 @@ class MainWindow(QMainWindow):
 
         # First column
         firstColumn = QVBoxLayout()
+        centralWidget.setLayout(firstColumn)
         firstColumn.addWidget(QLabel("First Column Top"))
         firstColumn.addWidget(QLabel("First Column Bottom"))
 
         # Second column
         secondColumn = QVBoxLayout()
+        centralWidget.setLayout(secondColumn)
         buttonRowLayout = QHBoxLayout()
         buttonRowLayout.setSpacing(10)  # Set spacing between widgets in the layout to 0
         buttonRowLayout.setContentsMargins(5, 0, 5, 0)  # Set the layout's margins to 20
@@ -67,14 +69,13 @@ class MainWindow(QMainWindow):
         # buttonRowLayout.addStretch(0)
         sizeLabel = QLabel("Textsize:")
         sizeLabel.setStyleSheet("font-size: 25px; color: #000000; background-color: lightgrey; border: 5px solid grey;")
+
         # Add Widgets
         buttonRowLayout.addWidget(self.adjustSizeToPercentageBoldButton())
         buttonRowLayout.addWidget(self.adjustSizeToPercentageKursivButton())
         buttonRowLayout.addWidget(self.adjustSizeToPercentageUnderlineButton())
         buttonRowLayout.addWidget(sizeLabel)
         buttonRowLayout.addWidget(self.adjustSizeToPercentageDropdown())
-
-
         secondColumn.addLayout(buttonRowLayout)
         secondColumn.addWidget(self.adjustSizeToPercentageIOBox())
 
@@ -102,11 +103,11 @@ class MainWindow(QMainWindow):
 
         # Show the window in full-screen mode
         self.showFullScreen()
+
     def adjustSizeToPercentageIOBox(self):
         # Example widget
         iobox = QLineEdit()
-        iobox.setMaxLength(10)
-
+        iobox.setMaxLength(1000)
 
         # widget.setReadOnly(True) # uncomment this to make readonly
 
@@ -117,9 +118,10 @@ class MainWindow(QMainWindow):
 
         # Calculate size as a percentage of the parent widget's size
         widthPercentage = 0.5  # 50% of parent's width
-        heightPercentage = 0.9  # 50% of parent's height
+        heightPercentage = 0.9 # 90% of parent's height
 
-        # Calculate the absolute size based on percentage
+        # Calculate the absolute size based on percentaged
+
         calculatedWidth = int(size_width * widthPercentage)
         calculatedHeight = int(size_height * heightPercentage)
 
@@ -263,7 +265,7 @@ class MainWindow(QMainWindow):
 
     def return_pressed(self):
         print("Return pressed!")
-        self.centralWidget().setText("BOOM!")
+        self.secondColumn.addWidget(self.adjustSizeToPercentageIOBox().setText("BOOM!"))
 
     def selection_changed(self):
         print("Selection changed")
