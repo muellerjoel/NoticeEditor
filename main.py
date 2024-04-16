@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QWidget,
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QWidget, QLineEdit,
                              QVBoxLayout, QHBoxLayout, QLabel, QFrame, QComboBox)
 from PyQt6.QtCore import QSize  # Import Qt for alignment and other constants
 
@@ -7,6 +7,8 @@ from PyQt6.QtCore import QSize  # Import Qt for alignment and other constants
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        self.setWindowTitle("Notice Editor GUI")
 
         # Create a central widget and set it
         centralWidget = QWidget()
@@ -72,10 +74,9 @@ class MainWindow(QMainWindow):
         buttonRowLayout.addWidget(sizeLabel)
         buttonRowLayout.addWidget(self.adjustSizeToPercentageDropdown())
 
-        secondColumn.addLayout(buttonRowLayout)
 
-        secondColumn.addWidget(QLabel("Second Column Top"))
-        secondColumn.addWidget(QLabel("Second Column Bottom"))
+        secondColumn.addLayout(buttonRowLayout)
+        secondColumn.addWidget(self.adjustSizeToPercentageIOBox())
 
         # Layout for columns
         columnsLayout = QHBoxLayout()
@@ -101,6 +102,33 @@ class MainWindow(QMainWindow):
 
         # Show the window in full-screen mode
         self.showFullScreen()
+    def adjustSizeToPercentageIOBox(self):
+        # Example widget
+        iobox = QLineEdit()
+        iobox.setMaxLength(10)
+
+
+        # widget.setReadOnly(True) # uncomment this to make readonly
+
+        iobox.returnPressed.connect(self.return_pressed)
+        iobox.selectionChanged.connect(self.selection_changed)
+        iobox.textChanged.connect(self.text_changed)
+        iobox.textEdited.connect(self.text_edited)
+
+        # Calculate size as a percentage of the parent widget's size
+        widthPercentage = 0.5  # 50% of parent's width
+        heightPercentage = 0.9  # 50% of parent's height
+
+        # Calculate the absolute size based on percentage
+        calculatedWidth = int(size_width * widthPercentage)
+        calculatedHeight = int(size_height * heightPercentage)
+
+        # Set the calculated size to the widget
+
+        iobox.setFixedSize(QSize(calculatedWidth, calculatedHeight))
+        iobox.setPlaceholderText("Enter your text")
+
+        return iobox
 
     def adjustSizeToPercentageBoldButton(self):
         # Example widget
@@ -232,6 +260,22 @@ class MainWindow(QMainWindow):
                                         border-bottom-right-radius: 5px;
                                         }""")
         return sizeDropdown
+
+    def return_pressed(self):
+        print("Return pressed!")
+        self.centralWidget().setText("BOOM!")
+
+    def selection_changed(self):
+        print("Selection changed")
+        print(self.centralWidget().selectedText())
+
+    def text_changed(self, s):
+        print("Text changed...")
+        print(s)
+
+    def text_edited(self, s):
+        print("Text edited...")
+        print(s)
 
     @staticmethod
     def onSaveClicked():
