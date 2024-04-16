@@ -1,12 +1,14 @@
 import sys
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QWidget, QLineEdit,
-                             QVBoxLayout, QHBoxLayout, QLabel, QFrame, QComboBox)
-from PyQt6.QtCore import QSize  # Import Qt for alignment and other constants
+                             QVBoxLayout, QHBoxLayout, QLabel, QFrame, QComboBox,
+                             QListWidget, QListWidgetItem)
+from PyQt6.QtCore import QSize, Qt  # Import Qt for alignment and other constants
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+
 
         self.setWindowTitle("Notice Editor GUI")
 
@@ -56,8 +58,8 @@ class MainWindow(QMainWindow):
         # First column
         firstColumn = QVBoxLayout()
         centralWidget.setLayout(firstColumn)
-        firstColumn.addWidget(QLabel("First Column Top"))
-        firstColumn.addWidget(QLabel("First Column Bottom"))
+        #firstColumn.addWidget(QLabel("First Column Top"))
+        #firstColumn.addWidget(QLabel("First Column Bottom"))
 
         # Second column
         secondColumn = QVBoxLayout()
@@ -70,14 +72,40 @@ class MainWindow(QMainWindow):
         sizeLabel = QLabel("Textsize:")
         sizeLabel.setStyleSheet("font-size: 25px; color: #000000; background-color: lightgrey; border: 5px solid grey;")
 
+        # List Widget
+        self.list_widget = QListWidget()
+        self.list_widget.addItem("Add a new notice by tap the add button")
+        self.list_widget.setAlternatingRowColors(True)
+        # Enable editing of the list items
+        self.list_widget.setEditTriggers(QListWidget.EditTrigger.DoubleClicked)
+
+        # Button layout
+        button_layout = QHBoxLayout()
+
+        # Add button
+        add_button = QPushButton("Add")
+        add_button.clicked.connect(self.add_item)
+        button_layout.addWidget(add_button)
+
+        # Delete button
+        delete_button = QPushButton("Delete")
+        delete_button.clicked.connect(self.delete_item)
+        button_layout.addWidget(delete_button)
+
+        # Add widgets to the main layout
+
+
         # Add Widgets
         buttonRowLayout.addWidget(self.adjustSizeToPercentageBoldButton())
         buttonRowLayout.addWidget(self.adjustSizeToPercentageKursivButton())
         buttonRowLayout.addWidget(self.adjustSizeToPercentageUnderlineButton())
         buttonRowLayout.addWidget(sizeLabel)
         buttonRowLayout.addWidget(self.adjustSizeToPercentageDropdown())
+        firstColumn.addWidget(self.list_widget)
+        firstColumn.addLayout(button_layout)
         secondColumn.addLayout(buttonRowLayout)
         secondColumn.addWidget(self.adjustSizeToPercentageIOBox())
+
 
         # Layout for columns
         columnsLayout = QHBoxLayout()
@@ -265,7 +293,7 @@ class MainWindow(QMainWindow):
 
     def return_pressed(self):
         print("Return pressed!")
-        self.secondColumn.addWidget(self.adjustSizeToPercentageIOBox().setText("BOOM!"))
+       # self.secondColumn.addWidget(self.adjustSizeToPercentageIOBox().setPlaceholderText("BOOM"))
 
     def selection_changed(self):
         print("Selection changed")
@@ -279,6 +307,20 @@ class MainWindow(QMainWindow):
         print("Text edited...")
         print(s)
 
+    def add_item(self):
+        # Adding a new item with a placeholder text
+        new_item = QListWidgetItem("New Item")
+        new_item.setFlags(new_item.flags() | Qt.ItemFlag.ItemIsEditable)
+        self.list_widget.addItem(new_item)
+        self.list_widget.editItem(new_item)  # Automatically start editing the new item
+
+    def delete_item(self):
+        # Delete the selected item
+        current_item = self.list_widget.currentItem()
+        if current_item:
+            row = self.list_widget.row(current_item)
+            self.list_widget.takeItem(row)
+
     @staticmethod
     def onSaveClicked():
         # Implement your save functionality here
@@ -288,6 +330,7 @@ class MainWindow(QMainWindow):
     def onCloseClicked(self):
         # Close here
         self.close()
+
 
 
 # Run the application
