@@ -10,7 +10,7 @@ cd NoticeEditor
 
 https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe
 
-# Install of virtualenv requierments
+# Install of virtualenv requirements
 
 pip install virtualenv
 
