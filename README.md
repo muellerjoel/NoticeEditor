@@ -14,7 +14,7 @@ https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe
 
 pip install virtualenv
 
-# Installof virtualenv
+# Install of virtualenv
 
 python -m venv .venv
 
