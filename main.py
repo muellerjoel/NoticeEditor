@@ -132,7 +132,7 @@ class MainWindow(QMainWindow):
     def adjustSizeToPercentageIOBox(self):
         # Example widget
         iobox = QLineEdit()
-        iobox.setMaxLength(1000)
+        iobox.setMaxLength(100)
 
         # widget.setReadOnly(True) # uncomment this to make readonly
 
@@ -145,7 +145,7 @@ class MainWindow(QMainWindow):
         widthPercentage = 0.8333  # 83.33% of parent's width (5/6)
         heightPercentage = 0.9  # 90% of parent's height
 
-        # Calculate the absolute size based on percentaged
+        # Calculate the absolute size based on percentage
 
         calculatedWidth = int(size_width * widthPercentage)
         calculatedHeight = int(size_height * heightPercentage)
@@ -297,12 +297,10 @@ class MainWindow(QMainWindow):
         print("Selection changed")
         print(self.centralWidget().selectedText())
 
-    @staticmethod
     def text_changed(self, s):
         print("Text changed...")
         print(s)
 
-    @staticmethod
     def text_edited(self, s):
         print("Text edited...")
         print(s)
