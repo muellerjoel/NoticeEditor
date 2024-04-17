@@ -142,7 +142,7 @@ class MainWindow(QMainWindow):
         iobox.textEdited.connect(self.text_edited)
 
         # Calculate size as a percentage of the parent widget's size
-        widthPercentage = 0.5  # 50% of parent's width
+        widthPercentage = 0.8333  # 83.33% of parent's width (5/6)
         heightPercentage = 0.9  # 90% of parent's height
 
         # Calculate the absolute size based on percentaged
