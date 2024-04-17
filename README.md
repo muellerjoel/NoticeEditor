@@ -18,6 +18,10 @@ pip install virtualenv
 
 python -m venv .venv
 
+# Activation of virtualenv
+
+source .venv/bin/activate
+
 # Installation of NoticeEditor requierements
 
 pip install -r requirements.txt
