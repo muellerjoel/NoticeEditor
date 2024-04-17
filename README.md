@@ -18,9 +18,11 @@ pip install virtualenv
 
 python -m venv .venv
 
-# Activation of virtualenv
+# Activation of virtualenv 1. Windows 1.1 CMD 1.2 Powershell
 
-source .venv/bin/activate
+.venv/Scripts/activate.bat 
+.venv/Scripts/Activate.ps1 
+
 
 # Install of NoticeEditor requirements
 
