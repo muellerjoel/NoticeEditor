@@ -10,11 +10,11 @@ cd NoticeEditor
 
 https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe
 
-# Installation of virtualenv requierments
+# Install of virtualenv requierments
 
 pip install virtualenv
 
-# Installation of virtualenv
+# Installof virtualenv
 
 python -m venv .venv
 
@@ -22,7 +22,7 @@ python -m venv .venv
 
 source .venv/bin/activate
 
-# Installation of NoticeEditor requierements
+# Install of NoticeEditor requierements
 
 pip install -r requirements.txt
 
