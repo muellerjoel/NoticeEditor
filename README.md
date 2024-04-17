@@ -22,7 +22,7 @@ python -m venv .venv
 
 source .venv/bin/activate
 
-# Install of NoticeEditor requierements
+# Install of NoticeEditor requirements
 
 pip install -r requirements.txt
 
