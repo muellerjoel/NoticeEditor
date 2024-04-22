@@ -1,7 +1,7 @@
 import sys
 from PyQt6.QtCore import QSize  # Import Qt for alignment and other constants
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QFrame,
-                             QListWidget)
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QWidget,
+                             QVBoxLayout, QHBoxLayout, QLabel, QFrame, QListWidget)
 from iobox import IOBox
 from notice_list import NoticeList
 from buttons import ClickButton
