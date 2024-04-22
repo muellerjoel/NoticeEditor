@@ -6,11 +6,11 @@ class IOBox:
     def __init__(self, size_width, size_height):
         self.size_width = size_width
         self.size_height = size_height
+
     def adjust_size_to_percentage_iobox(self):
         # Example widget
         io_box = QLineEdit()
         io_box.setMaxLength(100)
-
 
         # widget.setReadOnly(True) # uncomment this to make readonly
 
@@ -33,6 +33,7 @@ class IOBox:
         io_box.setPlaceholderText("Enter your text")
 
         return io_box
+
     def return_pressed(self):
         print("Return pressed!")
 
