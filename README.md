@@ -18,9 +18,11 @@ pip install virtualenv
 
 python -m venv .venv
 
-# Activation of virtualenv 1. Windows 1.1 CMD 1.2 Powershell
+# Activation of virtualenv Windows 
 
+## 1.1 CMD
 .venv/Scripts/activate.bat 
+## 1.2 Powershell
 .venv/Scripts/Activate.ps1 
 
 
